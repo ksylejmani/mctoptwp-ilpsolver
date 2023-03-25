@@ -15,6 +15,7 @@ class MCTOPTWP_ILP:
 
 if __name__=="__main__":
     """Create an object and use parameters"""
+    instance_path="instance/MCTOPP-"
     instance_name=""
     computation_time=300
 
