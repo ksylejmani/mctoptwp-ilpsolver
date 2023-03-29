@@ -211,7 +211,7 @@ class MCTOPTWP_ILP:
 
 def help_function():
     """Define help function"""
-    print("The solver should be callde usign the command 'python mctoptwp_ilp_solver.py instance_type computation_time instance_name.txt'")
+    print("The solver should be callde usign the command 'python mctoptwp_ilp_solver.py instance_type instance_name.txt computation_time'")
     print("Example: python mctoptwp_ilp_solver.py Cordeau Scenario_input.txt 300")
 
 if __name__=="__main__":
