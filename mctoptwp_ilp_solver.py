@@ -132,14 +132,14 @@ class MCTOPTWP_ILP:
                            for d in range(self.mctoptwp.M)) == 
                     sum(sum(x[(i, self.mctoptwp.N-1,d)] 
                            for i in range(self.mctoptwp.N-1)) 
-                           for d in range(self.mctoptwp.M)), 
+                           for d in range(self.mctoptwp.M))==self.mctoptwp.M, 
                            name='start from location 1 and end at location N')
 
         for o in range(1, self.mctoptwp.N-1):
             for d in range(self.mctoptwp.M):
-                s1=sum(x[(i,o,d)] for i in range(self.mctoptwp.N-1) if i!=o)
+                s1= sum(x[(i,o,d)] for i in range(self.mctoptwp.N-1) if i!=o)
                 s2= sum(x[(o,j,d)] for j in range(1,self.mctoptwp.N) if j!=o)
-                solver.Add( s1==s2==y[(o,d)], name='connectivity of each tour')
+                solver.Add(s1==s2==y[(o,d)], name='connectivity of each tour')
         
         for i in range(self.mctoptwp.N):
             for j in range(self.mctoptwp.N):
@@ -216,23 +216,23 @@ def help_function():
 
 if __name__=="__main__":
     """Create an object and use parameters"""
-    instance_type="Cordeau"
-    instance_name="Scenario_input.txt"
-    computation_time=300
-    mi=MCTOPTWP_ILP(instance_type, instance_name)
-    mi.create_model(computation_time)
+    # instance_type="Cordeau"
+    # instance_name="Scenario_input.txt"
+    # computation_time=300
+    # mi=MCTOPTWP_ILP(instance_type, instance_name)
+    # mi.create_model(computation_time)
 
-    # arguments=sys.argv
-    # if len(arguments)!=4:
-    #     help_function()
-    #     exit()
-    # else:
-    #     instance_type = arguments[1]
-    #     instance_name = arguments[2]
-    #     computation_time=int(arguments[3])
-    #     mi=MCTOPTWP_ILP(instance_type, instance_name)
-    #     print(mi.mctoptwp.M)
-    #     print(mi.mctoptwp.N)
-    #     print(mi.mctoptwp.B)
-    #     print(mi.mctoptwp.max_attribute_constraint)
-    #     print(mi.mctoptwp.pois)
+    arguments=sys.argv
+    if len(arguments)!=4:
+        help_function()
+        exit()
+    else:
+        instance_type = arguments[1]
+        instance_name = arguments[2]
+        computation_time=int(arguments[3])
+        mi=MCTOPTWP_ILP(instance_type, instance_name)
+        print(mi.mctoptwp.M)
+        print(mi.mctoptwp.N)
+        print(mi.mctoptwp.B)
+        print(mi.mctoptwp.max_attribute_constraint)
+        print(mi.mctoptwp.pois)
